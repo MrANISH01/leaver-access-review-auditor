@@ -1,0 +1,3 @@
+[
+  {"system": "Slack", "external_account_id": "S-1006", "reason": "Shared on-call mailbox owned by IT Ops; not an individual's account", "added_by": "it-ops@acme.example"}
+]

@@ -1,0 +1,8 @@
+[
+  {"employee_id": "E101", "full_name": "Rahul Verma",  "work_email": "rahul.verma@acme.example",  "employment_status": "TERMINATED", "termination_date": "2026-09-15", "department": "Engineering"},
+  {"employee_id": "E102", "full_name": "Priya Nair",   "work_email": "priya.sharma@acme.example", "employment_status": "TERMINATED", "termination_date": "2026-09-30", "department": "Finance"},
+  {"employee_id": "E103", "full_name": "Arjun Mehta",  "work_email": "arjun.mehta@acme.example",  "employment_status": "ACTIVE",     "termination_date": null,         "department": "Engineering"},
+  {"employee_id": "E104", "full_name": "Neha Kapoor",  "work_email": "neha.kapoor@acme.example",  "employment_status": "TERMINATED", "termination_date": "2026-08-20", "department": "Sales"},
+  {"employee_id": "E105", "full_name": "Karan Singh",  "work_email": "karan.singh@acme.example",  "employment_status": "TERMINATED", "termination_date": "2026-10-05", "department": "Engineering"},
+  {"employee_id": "E106", "full_name": "Meera Iyer",   "work_email": "meera.iyer@acme.example",   "employment_status": "TERMINATED", "termination_date": "2026-09-01", "department": "Support"}
+]

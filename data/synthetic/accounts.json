@@ -1,0 +1,20 @@
+[
+  {"system": "Slack",  "external_account_id": "S-1001", "email": "rahul.verma@acme.example",  "display_name": "Rahul Verma",  "username": "rahul.verma",  "account_type": "INDIVIDUAL", "status": "ACTIVE",   "last_login_at": "2026-09-14T17:42:00Z"},
+  {"system": "Slack",  "external_account_id": "S-1002", "email": "priya.sharma@acme.example", "display_name": "Priya Sharma", "username": "priya.sharma", "account_type": "INDIVIDUAL", "status": "ACTIVE",   "last_login_at": "2026-09-28T09:14:00Z"},
+  {"system": "Slack",  "external_account_id": "S-1003", "email": "arjun.mehta@acme.example",  "display_name": "Arjun Mehta",  "username": "arjun.mehta",  "account_type": "INDIVIDUAL", "status": "ACTIVE",   "last_login_at": "2026-10-21T04:12:00Z"},
+  {"system": "Slack",  "external_account_id": "S-1004", "email": "neha.kapoor@acme.example",  "display_name": "Neha Kapoor",  "username": "neha.kapoor",  "account_type": "INDIVIDUAL", "status": "DISABLED", "last_login_at": "2026-08-19T12:00:00Z"},
+  {"system": "Slack",  "external_account_id": "S-1005", "email": "it-alerts@acme.example",    "display_name": "IT Alerts Bot","username": "it-alerts",    "account_type": "SERVICE",    "status": "ACTIVE",   "last_login_at": null},
+  {"system": "Slack",  "external_account_id": "S-1006", "email": "ops-oncall@acme.example",   "display_name": "Ops On-Call",  "username": "ops-oncall",   "account_type": "INDIVIDUAL", "status": "ACTIVE",   "last_login_at": "2026-10-20T22:30:00Z"},
+
+  {"system": "GitHub", "external_account_id": "G-2001", "email": "rahul.verma@acme.example",  "display_name": "Rahul Verma",  "username": "rahulv-dev",   "account_type": "INDIVIDUAL", "status": "ACTIVE",   "last_login_at": "2026-09-12T10:05:00Z"},
+  {"system": "GitHub", "external_account_id": "G-2002", "email": "priya.sharma@acme.example", "display_name": "Priya Sharma", "username": "priya-sharma", "account_type": "INDIVIDUAL", "status": "ACTIVE",   "last_login_at": "2026-09-29T11:20:00Z"},
+  {"system": "GitHub", "external_account_id": "G-2003", "email": "arjun.mehta@acme.example",  "display_name": "Arjun Mehta",  "username": "arjun-m",      "account_type": "INDIVIDUAL", "status": "ACTIVE",   "last_login_at": "2026-10-20T15:40:00Z"},
+  {"system": "GitHub", "external_account_id": "G-2004", "email": "ci-bot@acme.example",       "display_name": "CI Deploy Bot","username": "ci-deploy-bot","account_type": "SERVICE",    "status": "ACTIVE",   "last_login_at": "2026-10-21T02:00:00Z"},
+  {"system": "GitHub", "external_account_id": "G-2005", "email": "karan.singh.personal@mailbox.example", "display_name": "Karan Singh", "username": "karan-singh-codes", "account_type": "INDIVIDUAL", "status": "ACTIVE", "last_login_at": "2026-10-04T08:30:00Z"},
+
+  {"system": "Jira",   "external_account_id": "J-3001", "email": "rahul.verma@acme.example",  "display_name": "Rahul Verma",  "username": "rverma",       "account_type": "INDIVIDUAL", "status": "ACTIVE",   "last_login_at": null},
+  {"system": "Jira",   "external_account_id": "J-3002", "email": "priya.sharma@acme.example", "display_name": "Priya Sharma", "username": "psharma",      "account_type": "INDIVIDUAL", "status": "ACTIVE",   "last_login_at": "2026-09-25T13:10:00Z"},
+  {"system": "Jira",   "external_account_id": "J-3003", "email": "shared-helpdesk@acme.example", "display_name": "Helpdesk Shared Login", "username": "helpdesk", "account_type": "SHARED", "status": "ACTIVE", "last_login_at": "2026-10-19T09:00:00Z"},
+  {"system": "Jira",   "external_account_id": "J-3004", "email": "arjun.mehta@acme.example",  "display_name": "Arjun Mehta",  "username": "amehta",       "account_type": "INDIVIDUAL", "status": "ACTIVE",   "last_login_at": "2026-10-20T10:20:00Z"},
+  {"system": "Jira",   "external_account_id": "J-3005", "email": "meera.i@contractor-mail.example", "display_name": "M. Iyer", "username": "miyer", "account_type": "INDIVIDUAL", "status": "ACTIVE", "last_login_at": "2026-08-30T16:45:00Z", "employee_id": "E106"}
+]
