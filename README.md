@@ -19,31 +19,30 @@ Windows PowerShell:
 
 ## Run (local demo)
 
+### Backend
 macOS / Linux:
     cd backend
     export DEMO_MODE=1
     export FRONTEND_ORIGIN=http://localhost:5173
-    export APPROVER_ACTORS=approver@acme.example,approver2@acme.example
+    export APPROVER_ACTORS=demo-approver,approver@acme.example,approver2@acme.example
     python run.py
 
 Windows PowerShell:
     cd backend
     $env:DEMO_MODE="1"; $env:FRONTEND_ORIGIN="http://localhost:5173"
-    $env:APPROVER_ACTORS="approver@acme.example,approver2@acme.example"
+    $env:APPROVER_ACTORS="demo-approver,approver@acme.example,approver2@acme.example"
     python run.py
 
 API base URL: http://127.0.0.1:5001/api/v1
 
-| Variable | Default | Meaning |
-|---|---|---|
-| CONNECTOR | synthetic | `synthetic` or `mock_admin` (mock_admin not implemented yet; startup fails clearly) |
-| DEMO_MODE | 0 | `1` enables /dev/* endpoints. Without it they do not exist (404) |
-| FRONTEND_ORIGIN | (empty = no CORS) | Exact origin(s), comma-separated. `*` is rejected |
-| DATABASE_PATH | instance/auditor.sqlite3 | SQLite file |
-| APPROVER_ACTORS | (empty) | Comma-separated identities allowed to approve/reject, e.g. `approver@acme.example`. **Empty = nobody can approve** (fails closed). Case-insensitive; no wildcards |
-| HOST / PORT | 127.0.0.1 / 5001 | DEMO_MODE refuses non-loopback HOST unless ALLOW_LAN_DEMO=1 |
+### Frontend (LeaverGuard Web UI)
+In a separate terminal:
 
-Run a single server process: synthetic SaaS state lives in memory.
+    cd frontend
+    npm install
+    npm run dev
+
+Open `http://localhost:5173`. Toggle between live Flask API and synthetic mock mode in `frontend/.env.local` (`VITE_DATA_MODE=live` or `demo`).
 
 ## Test
 

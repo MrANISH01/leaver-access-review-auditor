@@ -1,5 +1,6 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ListChecks, RefreshCw } from 'lucide-react'
+import { CheckCircle2, ListChecks, RefreshCw } from 'lucide-react'
 import { api } from '../services/api.js'
 import useAsync from '../hooks/useAsync.js'
 import PageHeader from '../components/PageHeader.jsx'
@@ -21,7 +22,26 @@ function LoadingRows({ rows = 4 }) {
 
 export default function Overview() {
   const { data, loading, error, reload } = useAsync(api.getOverview)
+  const [scanning, setScanning] = useState(false)
+  const [scanNotice, setScanNotice] = useState(null)
   const counts = data?.counts
+
+  async function handleRunScan() {
+    if (scanning) return
+    setScanning(true)
+    setScanNotice(null)
+    try {
+      if (typeof api.triggerScan === 'function') {
+        await api.triggerScan()
+        setScanNotice('Scan completed. Findings and summary updated.')
+        reload()
+      }
+    } catch (err) {
+      setScanNotice(`Scan failed: ${err.message}`)
+    } finally {
+      setScanning(false)
+    }
+  }
 
   const header = (
     <PageHeader
@@ -29,8 +49,14 @@ export default function Overview() {
       description="Accounts that belong to people who have left the organization, and what still needs a decision."
       actions={
         <>
-          <button type="button" className="btn btn--secondary" disabled title="Starting a scan from this screen is not connected to the backend yet.">
-            <RefreshCw size={16} aria-hidden="true" /> Run scan
+          <button
+            type="button"
+            className="btn btn--secondary"
+            onClick={handleRunScan}
+            disabled={loading || scanning}
+            title="Run a read-only audit scan now"
+          >
+            <RefreshCw size={16} aria-hidden="true" /> {scanning ? 'Scanning…' : 'Run scan'}
           </button>
           <Link to="/findings" className="btn btn--primary">View findings</Link>
         </>
@@ -50,6 +76,13 @@ export default function Overview() {
   return (
     <>
       {header}
+
+      {scanNotice && (
+        <div className="callout tone-brand" role="status" style={{ marginBottom: 16 }}>
+          <CheckCircle2 size={18} aria-hidden="true" />
+          <p>{scanNotice}</p>
+        </div>
+      )}
 
       <section className="stat-grid" aria-label="Audit summary">
         <StatCard label="Total findings" value={counts?.total} icon={ListChecks} tone="brand" to="/findings" loading={loading} />

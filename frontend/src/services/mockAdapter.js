@@ -395,5 +395,10 @@ export const mockAdapter = {
     resetExecutionState()
     return { ok: true }
   },
+
+  async triggerScan() {
+    await delay(SAVE_LATENCY_MS)
+    return { scan: MOCK_SCAN }
+  },
 }
 

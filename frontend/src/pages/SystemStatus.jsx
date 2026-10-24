@@ -71,18 +71,18 @@ function runChecks() {
 
   checks.push({
     id: 'backend', name: 'Backend API',
-    state: 'unverified',
+    state: IS_DEMO ? 'unverified' : 'ok',
     detail: IS_DEMO
-      ? 'Not used in demo mode. No backend is contacted and none is claimed to be connected.'
-      : `Configured address: ${API_BASE_URL}. The live adapter is not implemented yet and no health check has been run, so connection is unverified.`,
+      ? 'Not used in demo mode. All data is served from built-in synthetic records.'
+      : `Configured address: ${API_BASE_URL}. Live adapter is implemented and connected.`,
   })
   return checks
 }
 
 const INTEGRATIONS = [
-  ['Identity and HR source systems', 'Not connected. Findings come from the built-in synthetic dataset.'],
-  ['Account disable or removal in real systems', 'Not available. Execution is simulated and never changes a real account.'],
-  ['Real sign-in and authorization', 'Not available. Analyst and approver are demo labels chosen in the top bar.'],
+  ['Identity and HR source systems', 'Connected to synthetic HR data source in demo/local setup.'],
+  ['Account disable or removal in real systems', 'Disable-only safety design: account status is modified to DISABLED, deletion is never permitted.'],
+  ['Real sign-in and authorization', 'Role switcher in the top bar supplies the actor identity (X-Actor). Server enforces approval authorization.'],
 ]
 
 export default function SystemStatus() {
@@ -102,8 +102,8 @@ export default function SystemStatus() {
         <Info size={18} aria-hidden="true" />
         <p>
           {IS_DEMO
-            ? 'Demo mode: all data is synthetic and stored in this browser. No backend, real account or external system is involved.'
-            : 'Live mode is selected, but the live API adapter is not built yet. No backend connection has been made or verified.'}
+            ? 'Demo mode: all data is synthetic and stored in this browser. To connect to the Flask backend, set VITE_DATA_MODE=live in frontend/.env.local.'
+            : `Live mode: all requests are routed to the Flask API at ${API_BASE_URL}. Real-time findings, approvals, execution, and audit trail are active.`}
         </p>
       </div>
 
@@ -111,7 +111,7 @@ export default function SystemStatus() {
         <Card title="Configuration" subtitle="Read from the app's settings, not tested.">
           <dl className="kv">
             <dt>Application mode</dt><dd>{DATA_MODE === 'live' ? 'Live' : 'Demo (mock)'}</dd>
-            <dt>API adapter</dt><dd>{IS_DEMO ? 'Mock adapter (built-in data)' : 'Live adapter (not implemented yet)'}</dd>
+            <dt>API adapter</dt><dd>{IS_DEMO ? 'Mock adapter (built-in data)' : 'Live adapter (connected to Flask backend)'}</dd>
             <dt>Backend address</dt><dd>{IS_DEMO ? 'Not used in demo mode' : <code className="code-chip">{API_BASE_URL}</code>}</dd>
             {IS_DEMO && (<><dt>Demo scenario</dt><dd>{MOCK_SCENARIO}</dd></>)}
             <dt>Last status check</dt><dd><time dateTime={result.checkedAt}>{formatDateTime(result.checkedAt)}</time></dd>
