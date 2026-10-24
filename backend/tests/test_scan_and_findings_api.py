@@ -73,9 +73,9 @@ class ScanApiTests(AppTestCase):
     def test_employees_are_synced_from_hr_on_scan(self):
         self.assertEqual(self.raw_db().execute("SELECT COUNT(*) FROM employees").fetchone()[0], 0)
         self.run_scan()
-        self.assertEqual(self.raw_db().execute("SELECT COUNT(*) FROM employees").fetchone()[0], 6)
+        self.assertEqual(self.raw_db().execute("SELECT COUNT(*) FROM employees").fetchone()[0], 7)
         self.run_scan()   # upsert, not duplicate
-        self.assertEqual(self.raw_db().execute("SELECT COUNT(*) FROM employees").fetchone()[0], 6)
+        self.assertEqual(self.raw_db().execute("SELECT COUNT(*) FROM employees").fetchone()[0], 7)
 
 
 class FindingsApiTests(AppTestCase):

@@ -43,8 +43,9 @@ class SyntheticHRSourceTests(unittest.TestCase):
     def test_lists_and_gets_employees(self):
         hr = SyntheticHRSource(DATA / "employees.json")
         self.assertIsInstance(hr, HRSource)
-        self.assertEqual(len(hr.list_employees()), 6)
+        self.assertEqual(len(hr.list_employees()), 7)
         self.assertEqual(hr.get_employee("E103").employment_status, EmploymentStatus.ACTIVE)
+        self.assertEqual(hr.get_employee("E107").employment_status, EmploymentStatus.ACTIVE)
         self.assertIsNone(hr.get_employee("NOPE"))
 
 

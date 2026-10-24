@@ -32,9 +32,9 @@ class DevResetTests(AppTestCase):
         r = self.client.post("/api/v1/dev/reset", headers=ACTOR)
         self.assertEqual(r.status_code, 200)
         data = r.get_json()["data"]
-        self.assertEqual((data["employees_seeded"], data["exclusions_seeded"], data["connector_accounts"]), (6, 1, 16))
+        self.assertEqual((data["employees_seeded"], data["exclusions_seeded"], data["connector_accounts"]), (7, 1, 16))
         db = self.raw_db()
-        self.assertEqual(db.execute("SELECT COUNT(*) FROM employees").fetchone()[0], 6)
+        self.assertEqual(db.execute("SELECT COUNT(*) FROM employees").fetchone()[0], 7)
         self.assertEqual(db.execute("SELECT COUNT(*) FROM exclusions").fetchone()[0], 1)
         row = db.execute("SELECT actor, event FROM audit_log").fetchone()
         self.assertEqual((row["actor"], row["event"]), (ACTOR["X-Actor"], "DEMO_RESET"))
@@ -43,7 +43,7 @@ class DevResetTests(AppTestCase):
         self.client.post("/api/v1/dev/reset", headers=ACTOR)
         self.client.post("/api/v1/dev/reset", headers=ACTOR)
         db = self.raw_db()
-        self.assertEqual(db.execute("SELECT COUNT(*) FROM employees").fetchone()[0], 6)
+        self.assertEqual(db.execute("SELECT COUNT(*) FROM employees").fetchone()[0], 7)
         self.assertEqual(db.execute("SELECT COUNT(*) FROM audit_log").fetchone()[0], 1)  # fresh trail
 
     def test_reset_restores_connector_state_and_clears_faults(self):
