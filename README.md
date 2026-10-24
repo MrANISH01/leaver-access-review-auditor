@@ -6,11 +6,13 @@ Disable-only: there is no delete capability anywhere in the code or schema.
 ## Setup (Python 3.10+)
 
 macOS / Linux:
+    cd backend
     python3 -m venv .venv
     source .venv/bin/activate
     pip install -r requirements.txt
 
 Windows PowerShell:
+    cd backend
     py -m venv .venv
     .venv\Scripts\Activate.ps1
     pip install -r requirements.txt
@@ -18,12 +20,14 @@ Windows PowerShell:
 ## Run (local demo)
 
 macOS / Linux:
+    cd backend
     export DEMO_MODE=1
     export FRONTEND_ORIGIN=http://localhost:5173
     export APPROVER_ACTORS=approver@acme.example,approver2@acme.example
     python run.py
 
 Windows PowerShell:
+    cd backend
     $env:DEMO_MODE="1"; $env:FRONTEND_ORIGIN="http://localhost:5173"
     $env:APPROVER_ACTORS="approver@acme.example,approver2@acme.example"
     python run.py
@@ -43,6 +47,7 @@ Run a single server process: synthetic SaaS state lives in memory.
 
 ## Test
 
+    cd backend
     python -m pytest -v
     # no pytest? the same tests also run with the standard library:
     python -m unittest discover -s tests -t . -v
