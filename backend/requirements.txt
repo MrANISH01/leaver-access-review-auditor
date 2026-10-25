@@ -1,6 +1,7 @@
 Flask>=3.0,<4
 requests>=2.31
 pytest>=8.0
+gunicorn>=21.2.0
 # Playwright is only needed if Member 3's mock-admin connector requires browser automation:
 # playwright>=1.45
 # Pydantic is added in Stage 3 when request-body validation needs it.

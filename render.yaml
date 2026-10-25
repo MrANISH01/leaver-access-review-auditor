@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: leaver-access-review-auditor-backend
+    runtime: python
+    region: oregon
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn -w 2 -b 0.0.0.0:$PORT "app:create_app()"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.12
+      - key: DEMO_MODE
+        value: "1"
+      - key: ALLOW_LAN_DEMO
+        value: "1"
+      - key: APPROVER_ACTORS
+        value: "demo-approver,approver@acme.example"
+      - key: FRONTEND_ORIGIN
+        sync: false
